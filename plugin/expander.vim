@@ -56,8 +56,8 @@ endfunction
 
 function! <SID>OnEnterPressed()
   if !g:isExpanderEnabled || !s:IsCursorBetweenPair()
-    let unchangedKey = "\n"
-    return unchangedKey
+    let enterKeyMappingText = "\<CR>"
+    return enterKeyMappingText
   endif
   call s:InsertExpansionText()
   let noKey = ""
