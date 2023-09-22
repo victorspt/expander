@@ -1,5 +1,5 @@
 " Plugin that expands new lines between brackets and XML-like tags.
-" Last Change: 2023 September 14
+" Last Change: 2023 September 22
 " Maintainer: Victor S.
 " License: This file is placed in the public domain.
 
@@ -7,6 +7,7 @@
 let s:save_cpo = &cpo
 set cpo&vim
 
+let g:isExpanderEnabled = 1
 let s:maxTagNameLength = 30
 let s:maxTagAttributeLength = 200
 " Pairs of patterns that describe the opening and closing elements:
@@ -54,7 +55,7 @@ function! s:IsCursorBetweenPair()
 endfunction
 
 function! <SID>OnEnterPressed()
-  if !s:IsCursorBetweenPair()
+  if !g:isExpanderEnabled || !s:IsCursorBetweenPair()
     let unchangedKey = "\n"
     return unchangedKey
   endif
