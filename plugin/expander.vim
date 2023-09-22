@@ -35,14 +35,8 @@ function! s:GetKeysToPressForExpansion()
   " Keys for: new line, new undo checkpoint, balance delimiter indents, add
   " line in between, balance indent:
   let keysToPress = "\<CR>\<C-g>u0\<C-d>" .. outsideIndentInKeys
-    \  .. "\<C-o>\<S-o>0\<C-d>" .. outsideIndentInKeys .. oneIndentLevel
+    \ .. "\<C-o>\<S-o>0\<C-d>" .. outsideIndentInKeys .. oneIndentLevel
   return keysToPress
-endfunction
-
-function! s:InsertExpansionText()
-  let keysToPress = s:GetKeysToPressForExpansion()
-  let flags = "in"
-  call feedkeys(keysToPress, flags)
 endfunction
 
 function! s:IsPatternOnBuffer(_, pattern)
@@ -59,9 +53,8 @@ function! <SID>OnEnterPressed()
     let enterKeyMappingText = "\<CR>"
     return enterKeyMappingText
   endif
-  call s:InsertExpansionText()
-  let noKey = ""
-  return noKey
+  let expansionKeys = s:GetKeysToPressForExpansion()
+  return expansionKeys
 endfunction
 
 function! s:MapPairToPattern(_, pair)
