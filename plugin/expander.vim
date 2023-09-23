@@ -69,7 +69,8 @@ function! s:Initialize()
     \ s:pairsToExpand,
     \ funcref("s:MapPairToPattern")
     \ )
-  inoremap <expr> <CR> <SID>OnEnterPressed()
+  inoremap <CR> <Plug>ExpanderOnenterpressed;
+  inoremap <script> <expr> <Plug>ExpanderOnenterpressed; <SID>OnEnterPressed()
 endfunction
 
 call s:Initialize()
