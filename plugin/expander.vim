@@ -64,13 +64,17 @@ function! s:MapPairToPattern(_, pair)
   return fullPattern
 endfunction
 
+function! s:SetupKeyMappings()
+  inoremap <CR> <Plug>ExpanderOnenterpressed;
+  inoremap <script> <expr> <Plug>ExpanderOnenterpressed; <SID>OnEnterPressed()
+endfunction
+
 function! s:Initialize()
   let s:patternsToExpand = mapnew(
     \ s:pairsToExpand,
     \ funcref("s:MapPairToPattern")
     \ )
-  inoremap <CR> <Plug>ExpanderOnenterpressed;
-  inoremap <script> <expr> <Plug>ExpanderOnenterpressed; <SID>OnEnterPressed()
+  call s:SetupKeyMappings()
 endfunction
 
 call s:Initialize()
