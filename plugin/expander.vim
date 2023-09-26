@@ -11,7 +11,7 @@ let g:isExpanderEnabled = 1
 let s:maxTagNameLength = 30
 let s:maxTagAttributeLength = 200
 " Pairs of patterns that describe the opening and closing elements:
-let s:pairsToExpand = [
+let s:defaultPairsToExpand = [
   \ ["(", ")"],
   \ ["[[]", "[]]"],
   \ ["{", "}"],
@@ -75,7 +75,9 @@ function! s:GetPatternsToExpandFromPairs(pairs)
 endfunction
 
 function! s:Initialize()
-  let s:patternsToExpand = s:GetPatternsToExpandFromPairs(s:pairsToExpand)
+  let s:patternsToExpand = s:GetPatternsToExpandFromPairs(
+    \ s:defaultPairsToExpand
+    \ )
   call s:SetupKeyMappings()
 endfunction
 
