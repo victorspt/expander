@@ -65,7 +65,7 @@ function! s:MapPairToPattern(_, pair)
 endfunction
 
 function! s:SetupKeyMappings()
-  inoremap <unique> <CR> <Plug>ExpanderOnenterpressed;
+  silent! inoremap <unique> <CR> <Plug>ExpanderOnenterpressed;
   inoremap <script> <expr> <Plug>ExpanderOnenterpressed; <SID>OnEnterPressed()
 endfunction
 
