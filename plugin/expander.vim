@@ -69,11 +69,13 @@ function! s:SetupKeyMappings()
   inoremap <script> <expr> <Plug>ExpanderOnenterpressed; <SID>OnEnterPressed()
 endfunction
 
+function! s:GetPatternsToExpandFromPairs(pairs)
+  let patterns = mapnew(a:pairs, funcref("s:MapPairToPattern"))
+  return patterns
+endfunction
+
 function! s:Initialize()
-  let s:patternsToExpand = mapnew(
-    \ s:pairsToExpand,
-    \ funcref("s:MapPairToPattern")
-    \ )
+  let s:patternsToExpand = s:GetPatternsToExpandFromPairs(s:pairsToExpand)
   call s:SetupKeyMappings()
 endfunction
 
