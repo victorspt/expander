@@ -76,7 +76,7 @@ endfunction
 
 function! s:Initialize()
   let s:patternsToExpand = s:GetPatternsToExpandFromPairs(
-    \ s:defaultPairsToExpand
+    \ s:defaultPairsToExpand + get(g:, "ExpanderCustomPairs", [])
     \ )
   call s:SetupKeyMappings()
 endfunction
