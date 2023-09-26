@@ -1,5 +1,5 @@
 " Plugin that expands new lines between brackets and XML-like tags.
-" Last Change: 2023 September 23
+" Last Change: 2023 September 26
 " Maintainer: Victor S.
 " License: This file is placed in the public domain.
 
