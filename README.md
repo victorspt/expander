@@ -3,7 +3,8 @@
 ## Description
 
 Expander is a Vim plugin for expanding newline characters inserted between
-brackets, XML-like tags, and other pairs of enclosing elements.
+pairs of enclosing elements, including brackets, XML-like tags, and
+user-defined pairs.
 
 The main goal of Expander is to be easy to use and fast.
 
@@ -70,4 +71,18 @@ Change the value to 0 to turn off the plugin. For example in the vimrc file:
 ```vim
 " Turn off Expander:
 let g:isExpanderEnabled = 0
+```
+
+#### `g:ExpanderCustomPairs`
+
+default value: \[\]
+
+Stores the list of custom pairs for expansion. Each pair must be a list of the
+strings that represent the opening and the closing elements, regular
+expressions are supported as in the `search()` built-in function and the `:s`
+command. Example of custom pair in the vimrc file:
+
+```vim
+" Expand C++ alternative tokens for curly brackets:
+let g:ExpanderCustomPairs = [ ["<:", ":>"] ]
 ```
